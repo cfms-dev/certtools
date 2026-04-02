@@ -1,7 +1,9 @@
-import sys
 import os
-from cryptography.hazmat.primitives import serialization
+import sys
+
 from cryptography import x509
+from cryptography.hazmat.primitives import serialization
+
 
 def pem_to_der(pem_path):
     with open(pem_path, "rb") as pem_file:
@@ -10,6 +12,7 @@ def pem_to_der(pem_path):
     with open(der_path, "wb") as der_file:
         der_file.write(cert.public_bytes(serialization.Encoding.DER))
     print(f"DER file saved to: {der_path}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
