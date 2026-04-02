@@ -38,7 +38,8 @@ int_cert = (
     .not_valid_before(datetime.datetime.now(datetime.timezone.utc))
     .not_valid_after(
         # Our intermediate will be valid for ~3 years
-        datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=365 * 3)
+        datetime.datetime.now(datetime.timezone.utc)
+        + datetime.timedelta(days=365 * 3)
     )
     .add_extension(
         # Allow no further intermediates (path length 0)

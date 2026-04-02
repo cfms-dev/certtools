@@ -36,7 +36,8 @@ root_cert = (
     .not_valid_before(datetime.datetime.now(datetime.timezone.utc))
     .not_valid_after(
         # Our certificate will be valid for ~10 years
-        datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=365 * 10)
+        datetime.datetime.now(datetime.timezone.utc)
+        + datetime.timedelta(days=365 * 10)
     )
     .add_extension(
         x509.BasicConstraints(ca=True, path_length=None),
