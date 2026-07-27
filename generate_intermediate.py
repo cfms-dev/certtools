@@ -1,7 +1,6 @@
 import datetime
 
 from cryptography import x509
-from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.x509.oid import NameOID
@@ -35,10 +34,10 @@ int_cert = (
     .issuer_name(root_cert.subject)
     .public_key(int_key.public_key())
     .serial_number(x509.random_serial_number())
-    .not_valid_before(datetime.datetime.now(datetime.timezone.utc))
+    .not_valid_before(datetime.datetime.now(datetime.UTC))
     .not_valid_after(
         # Our intermediate will be valid for ~3 years
-        datetime.datetime.now(datetime.timezone.utc)
+        datetime.datetime.now(datetime.UTC)
         + datetime.timedelta(days=365 * 3)
     )
     .add_extension(

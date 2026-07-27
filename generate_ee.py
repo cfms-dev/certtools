@@ -35,9 +35,9 @@ def main(domains: list[str], vaild_days: int):
         .issuer_name(int_cert.subject)
         .public_key(ee_key.public_key())
         .serial_number(x509.random_serial_number())
-        .not_valid_before(datetime.datetime.now(datetime.timezone.utc))
+        .not_valid_before(datetime.datetime.now(datetime.UTC))
         .not_valid_after(
-            datetime.datetime.now(datetime.timezone.utc)
+            datetime.datetime.now(datetime.UTC)
             + datetime.timedelta(days=vaild_days)
         )
         .add_extension(
